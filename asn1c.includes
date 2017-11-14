@@ -1,0 +1,17 @@
+.
+asn1c
+examples/sample.source.1609.2
+examples/sample.source.J2735
+examples/sample.source.LDAP3
+examples/sample.source.LTE-RRC
+examples/sample.source.MEGACO
+examples/sample.source.MHEG5
+examples/sample.source.PKIX1
+examples/sample.source.RRC
+examples/sample.source.TAP3
+examples/sample.source.ULP
+libasn1compiler
+libasn1fix
+libasn1parser
+libasn1print
+skeletons

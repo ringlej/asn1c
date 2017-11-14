@@ -16,6 +16,10 @@ asn_TYPE_operation_t asn_OP_BOOLEAN = {
 	BOOLEAN_free,
 	BOOLEAN_print,
 	BOOLEAN_compare,
+#ifdef	ASN_ENABLE_BNER_SUPPORT
+	BOOLEAN_decode_bner,
+	BOOLEAN_encode_bner,
+#endif	/* ASN_ENABLE_BNER_SUPPORT */
 	BOOLEAN_decode_ber,
 	BOOLEAN_encode_der,
 	BOOLEAN_decode_xer,

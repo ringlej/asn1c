@@ -40,6 +40,10 @@ typedef struct asn_INTEGER_specifics_s {
 #define INTEGER_constraint	asn_generic_no_constraint
 asn_struct_print_f INTEGER_print;
 asn_struct_compare_f INTEGER_compare;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+#define INTEGER_decode_bner	bner_decode_primitive
+bner_type_encoder_f INTEGER_encode_bner;
+#endif
 der_type_encoder_f INTEGER_encode_der;
 xer_type_decoder_f INTEGER_decode_xer;
 xer_type_encoder_f INTEGER_encode_xer;

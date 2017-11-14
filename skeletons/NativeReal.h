@@ -27,6 +27,12 @@ extern asn_TYPE_operation_t asn_OP_NativeReal;
 asn_struct_free_f  NativeReal_free;
 asn_struct_print_f NativeReal_print;
 asn_struct_compare_f NativeReal_compare;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f NativeFloat_decode_bner;
+bner_type_encoder_f NativeFloat_encode_bner;
+bner_type_decoder_f NativeDouble_decode_bner;
+bner_type_encoder_f NativeDouble_encode_bner;
+#endif
 ber_type_decoder_f NativeReal_decode_ber;
 der_type_encoder_f NativeReal_encode_der;
 per_type_decoder_f NativeReal_decode_uper;

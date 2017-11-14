@@ -10,6 +10,9 @@
 #if	defined(__alpha)
 #include <sys/resource.h>	/* For INFINITY */
 #endif
+#ifdef ASN_ENABLE_BNER_SUPPORT
+#include <bner_prim.h>
+#endif
 #include <stdlib.h>	/* for strtod(3) */
 #include <math.h>
 #include <float.h>
@@ -70,6 +73,10 @@ asn_TYPE_operation_t asn_OP_REAL = {
 	ASN__PRIMITIVE_TYPE_free,
 	REAL_print,
 	REAL_compare,
+#ifdef  ASN_ENABLE_BNER_SUPPORT
+	bner_decode_primitive,
+	bner_encode_primitive,
+#endif
 	ber_decode_primitive,
 	der_encode_primitive,
 	REAL_decode_xer,
@@ -451,6 +458,7 @@ REAL__xer_body_decode(const asn_TYPE_descriptor_t *td, void *sptr,
 	FREEMEM(b);
 	if(endptr == b) return XPBD_BROKEN_ENCODING;
 
+    ASN_DEBUG("value=%.15f", value);
 	if(asn_double2REAL(st, value))
 		return XPBD_SYSTEM_FAILURE;
 

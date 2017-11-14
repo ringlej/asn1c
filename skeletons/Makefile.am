@@ -104,6 +104,18 @@ libasn1cskeletons_la_SOURCES =                  \
 check_PROGRAMS =                    \
     check-converter_example         \
     check-converter_c89_example
+
+# BNER Support
+libasn1cskeletons_la_SOURCES +=				\
+	BOOLEAN_bner.c					\
+	INTEGER_bner.c \
+	NativeInteger_bner.c \
+	NULL_bner.c					\
+	bner_coder.c bner_coder.h			\
+	bner_prim.c bner_prim.h				\
+	bner_tag_lvt.c bner_tag_lvt.h			\
+	constr_SEQUENCE_oer.c
+
 LDADD = -lm
 
 check_converter_example_CFLAGS = -DNO_ASN_PDU

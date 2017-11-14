@@ -25,6 +25,10 @@ extern asn_TYPE_operation_t asn_OP_SEQUENCE_OF;
 #define	SEQUENCE_OF_free	SET_OF_free
 #define	SEQUENCE_OF_print	SET_OF_print
 #define	SEQUENCE_OF_constraint	SET_OF_constraint
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f SEQUENCE_OF_decode_bner;
+bner_type_encoder_f SEQUENCE_OF_encode_bner;
+#endif
 #define	SEQUENCE_OF_decode_ber	SET_OF_decode_ber
 #define	SEQUENCE_OF_decode_xer	SET_OF_decode_xer
 #define	SEQUENCE_OF_decode_uper	SET_OF_decode_uper

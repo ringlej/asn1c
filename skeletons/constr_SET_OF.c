@@ -1184,6 +1184,10 @@ asn_TYPE_operation_t asn_OP_SET_OF = {
 	SET_OF_free,
 	SET_OF_print,
 	SET_OF_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	0,//SET_OF_decode_bner,
+	0,//SET_OF_encode_bner,
+#endif /* ASN_ENABLE_BNER_SUPPORT */
 	SET_OF_decode_ber,
 	SET_OF_encode_der,
 	SET_OF_decode_xer,

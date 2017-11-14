@@ -12,6 +12,10 @@ asn_TYPE_operation_t asn_OP_OPEN_TYPE = {
 	OPEN_TYPE_free,
 	OPEN_TYPE_print,
 	OPEN_TYPE_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	0, //OPEN_TYPE_decode_bner,
+	0, //OPEN_TYPE_encode_bner,
+#endif
 	OPEN_TYPE_decode_ber,
 	OPEN_TYPE_encode_der,
 	OPEN_TYPE_decode_xer,

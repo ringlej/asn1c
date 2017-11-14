@@ -87,3 +87,17 @@ constr_SEQUENCE.h constr_SEQUENCE_oer.c
 constr_SET_OF.h constr_SET_OF_oer.c
 
 CODEC-PER:			# THIS IS A SPECIAL SECTION
+
+CODEC-BNER:			# THIS IS A SPECIAL SECTION
+bner_coder.h bner_coder.c # BNER encoding support
+bner_tag_lvt.h bner_tag_lvt.c # BNER tag support
+bner_prim.h bner_prim.c       # BNER primative support
+BOOLEAN_bner.c
+constr_CHOICE_bner.c
+constr_SEQUENCE_bner.c
+constr_SEQUENCE_OF_bner.c
+INTEGER_bner.c
+NativeInteger_bner.c
+NativeReal_bner.c
+NULL_bner.c
+OCTET_STRING_bner.c

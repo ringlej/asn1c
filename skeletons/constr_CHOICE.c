@@ -1317,6 +1317,10 @@ asn_TYPE_operation_t asn_OP_CHOICE = {
 	CHOICE_free,
 	CHOICE_print,
 	CHOICE_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	CHOICE_decode_bner,
+	CHOICE_encode_bner,
+#endif	/* ASN_ENABLE_BNER_SUPPORT */
 	CHOICE_decode_ber,
 	CHOICE_encode_der,
 	CHOICE_decode_xer,

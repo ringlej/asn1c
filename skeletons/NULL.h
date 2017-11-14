@@ -23,6 +23,10 @@ extern asn_TYPE_operation_t asn_OP_NULL;
 
 asn_struct_print_f NULL_print;
 asn_struct_compare_f NULL_compare;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f NULL_decode_bner;
+bner_type_encoder_f NULL_encode_bner;
+#endif
 der_type_encoder_f NULL_encode_der;
 xer_type_decoder_f NULL_decode_xer;
 xer_type_encoder_f NULL_encode_xer;

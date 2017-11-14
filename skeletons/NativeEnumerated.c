@@ -22,6 +22,10 @@ asn_TYPE_operation_t asn_OP_NativeEnumerated = {
 	NativeInteger_free,
 	NativeInteger_print,
 	NativeInteger_compare,
+#ifdef	ASN_ENABLE_BNER_SUPPORT
+	NativeInteger_decode_bner,
+	NativeInteger_encode_bner,
+#endif	/* ASN_ENABLE_BNER_SUPPORT */
 	NativeInteger_decode_ber,
 	NativeInteger_encode_der,
 	NativeInteger_decode_xer,

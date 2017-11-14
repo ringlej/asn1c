@@ -44,6 +44,10 @@ asn_TYPE_operation_t asn_OP_NativeReal = {
 	NativeReal_free,
 	NativeReal_print,
 	NativeReal_compare,
+#ifdef  ASN_ENABLE_BNER_SUPPORT
+	NativeFloat_decode_bner,
+	NativeFloat_encode_bner,
+#endif
 	NativeReal_decode_ber,
 	NativeReal_encode_der,
 	NativeReal_decode_xer,
@@ -261,7 +265,6 @@ NativeReal_encode_uper(const asn_TYPE_descriptor_t *td,
 
 	return erval;
 }
-
 #endif /* ASN_DISABLE_PER_SUPPORT */
 
 #ifndef ASN_DISABLE_OER_SUPPORT

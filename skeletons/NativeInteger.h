@@ -25,6 +25,10 @@ extern asn_TYPE_operation_t asn_OP_NativeInteger;
 asn_struct_free_f  NativeInteger_free;
 asn_struct_print_f NativeInteger_print;
 asn_struct_compare_f NativeInteger_compare;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f NativeInteger_decode_bner;
+bner_type_encoder_f NativeInteger_encode_bner;
+#endif
 ber_type_decoder_f NativeInteger_decode_ber;
 der_type_encoder_f NativeInteger_encode_der;
 xer_type_decoder_f NativeInteger_decode_xer;
@@ -34,7 +38,6 @@ oer_type_encoder_f NativeInteger_encode_oer;
 per_type_decoder_f NativeInteger_decode_uper;
 per_type_encoder_f NativeInteger_encode_uper;
 asn_random_fill_f  NativeInteger_random_fill;
-
 #define NativeInteger_constraint  asn_generic_no_constraint
 
 #ifdef __cplusplus

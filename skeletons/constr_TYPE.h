@@ -52,6 +52,11 @@ typedef void asn_oer_constraints_t;
 #include <oer_encoder.h>	/* Octet Encoding Rules encoder */
 #endif
 
+#ifdef  ASN_ENABLE_BNER_SUPPORT
+#include <bner_tag_lvt.h>
+#include <bner_coder.h>	/* BACnet Encoding Rules */
+#endif
+
 /*
  * Free the structure according to its specification.
  * Use one of ASN_STRUCT_{FREE,RESET,CONTENTS_ONLY} macros instead.
@@ -145,6 +150,10 @@ typedef struct asn_TYPE_operation_s {
     asn_struct_free_f *free_struct;     /* Free the structure */
     asn_struct_print_f *print_struct;   /* Human readable output */
     asn_struct_compare_f *compare_struct; /* Compare two structures */
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	bner_type_decoder_f *bner_decoder;	/* BACnet decoder */
+	bner_type_encoder_f *bner_encoder;	/* BACnet encoder */
+#endif
     ber_type_decoder_f *ber_decoder;      /* Generic BER decoder */
     der_type_encoder_f *der_encoder;      /* Canonical DER encoder */
     xer_type_decoder_f *xer_decoder;      /* Generic XER decoder */

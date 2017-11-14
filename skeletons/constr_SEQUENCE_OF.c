@@ -260,6 +260,10 @@ asn_TYPE_operation_t asn_OP_SEQUENCE_OF = {
 	SEQUENCE_OF_free,
 	SEQUENCE_OF_print,
 	SEQUENCE_OF_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	SEQUENCE_OF_decode_bner,
+	SEQUENCE_OF_encode_bner,
+#endif /* ASN_ENABLE_BNER_SUPPORT */
 	SEQUENCE_OF_decode_ber,
 	SEQUENCE_OF_encode_der,
 	SEQUENCE_OF_decode_xer,

@@ -17,6 +17,10 @@ asn_TYPE_operation_t asn_OP_NULL = {
 	BOOLEAN_free,
 	NULL_print,
 	NULL_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	NULL_decode_bner,
+	NULL_encode_bner,
+#endif  /* ASN_ENABLE_BNER_SUPPORT */
 	BOOLEAN_decode_ber,	/* Implemented in terms of BOOLEAN */
 	NULL_encode_der,	/* Special handling of DER encoding */
 	NULL_decode_xer,

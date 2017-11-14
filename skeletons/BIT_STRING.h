@@ -27,6 +27,8 @@ extern asn_OCTET_STRING_specifics_t asn_SPC_BIT_STRING_specs;
 asn_struct_print_f BIT_STRING_print;	/* Human-readable output */
 asn_struct_compare_f BIT_STRING_compare;
 asn_constr_check_f BIT_STRING_constraint;
+#define BIT_STRING_decode_bner        OCTET_STRING_decode_bner
+#define BIT_STRING_encode_bner        OCTET_STRING_encode_bner
 xer_type_encoder_f BIT_STRING_encode_xer;
 oer_type_decoder_f BIT_STRING_decode_oer;
 oer_type_encoder_f BIT_STRING_encode_oer;

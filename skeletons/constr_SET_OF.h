@@ -29,6 +29,10 @@ asn_struct_free_f SET_OF_free;
 asn_struct_print_f SET_OF_print;
 asn_struct_compare_f SET_OF_compare;
 asn_constr_check_f SET_OF_constraint;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f SET_OF_decode_bner;
+bner_type_encoder_f SET_OF_encode_bner;
+#endif
 ber_type_decoder_f SET_OF_decode_ber;
 der_type_encoder_f SET_OF_encode_der;
 xer_type_decoder_f SET_OF_decode_xer;

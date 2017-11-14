@@ -43,6 +43,10 @@ asn_struct_free_f CHOICE_free;
 asn_struct_print_f CHOICE_print;
 asn_struct_compare_f CHOICE_compare;
 asn_constr_check_f CHOICE_constraint;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f CHOICE_decode_bner;
+bner_type_encoder_f CHOICE_encode_bner;
+#endif
 ber_type_decoder_f CHOICE_decode_ber;
 der_type_encoder_f CHOICE_encode_der;
 xer_type_decoder_f CHOICE_decode_xer;

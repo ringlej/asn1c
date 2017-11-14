@@ -1428,6 +1428,10 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 		OUT("asn_struct_free_f %s_free;\n", p);
 		OUT("asn_struct_print_f %s_print;\n", p);
 		OUT("asn_constr_check_f %s_constraint;\n", p);
+		if(arg->flags & A1C_GEN_BNER) {
+		OUT("bner_type_decoder_f %s_decode_bner;\n", p);
+		OUT("bner_type_encoder_f %s_encode_bner;\n", p);
+		}
 		OUT("ber_type_decoder_f %s_decode_ber;\n", p);
 		OUT("der_type_encoder_f %s_encode_der;\n", p);
 		OUT("xer_type_decoder_f %s_decode_xer;\n", p);

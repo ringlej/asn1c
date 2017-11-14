@@ -24,6 +24,10 @@ extern asn_TYPE_operation_t asn_OP_BOOLEAN;
 asn_struct_free_f BOOLEAN_free;
 asn_struct_print_f BOOLEAN_print;
 asn_struct_compare_f BOOLEAN_compare;
+#ifdef ASN_ENABLE_BNER_SUPPORT
+bner_type_decoder_f BOOLEAN_decode_bner;
+bner_type_encoder_f BOOLEAN_encode_bner;
+#endif
 ber_type_decoder_f BOOLEAN_decode_ber;
 der_type_encoder_f BOOLEAN_encode_der;
 oer_type_decoder_f BOOLEAN_decode_oer;

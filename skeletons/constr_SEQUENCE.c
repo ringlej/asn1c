@@ -1534,6 +1534,10 @@ asn_TYPE_operation_t asn_OP_SEQUENCE = {
 	SEQUENCE_free,
 	SEQUENCE_print,
 	SEQUENCE_compare,
+#ifdef ASN_ENABLE_BNER_SUPPORT
+	SEQUENCE_decode_bner,
+	SEQUENCE_encode_bner,
+#endif /* ASN_ENSABLE_BNER_SUPPORT */
 	SEQUENCE_decode_ber,
 	SEQUENCE_encode_der,
 	SEQUENCE_decode_xer,

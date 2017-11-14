@@ -15,6 +15,10 @@ asn_TYPE_operation_t asn_OP_ANY = {
 	OCTET_STRING_free,
 	OCTET_STRING_print,
 	OCTET_STRING_compare,
+#ifdef	ASN_ENABLE_BNER_SUPPORT
+	OCTET_STRING_decode_bner,
+	OCTET_STRING_encode_bner,
+#endif	/* ASN_ENABLE_BNER_SUPPORT */
 	OCTET_STRING_decode_ber,
 	OCTET_STRING_encode_der,
 	OCTET_STRING_decode_xer_hex,

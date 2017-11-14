@@ -92,6 +92,11 @@ enum asn1c_flags {
 	 * Generate top-level configure.ac and Makefile.am
 	 */
 	A1C_GEN_AUTOTOOLS_EXAMPLE	= 0x200000,
+	/*
+	 * -gen-BNER
+	 * Generate BACnet Encoding Rules support code
+	 */
+	A1C_GEN_BNER			= 0x400000,
 };
 
 /*

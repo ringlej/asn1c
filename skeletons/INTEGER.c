@@ -6,6 +6,9 @@
 #include <asn_internal.h>
 #include <INTEGER.h>
 #include <asn_codecs_prim.h>	/* Encoder and decoder of a primitive type */
+#ifdef	ASN_ENABLE_BNER_SUPPORT
+#include <bner_prim.h>
+#endif
 #include <errno.h>
 
 /*
@@ -18,6 +21,10 @@ asn_TYPE_operation_t asn_OP_INTEGER = {
 	INTEGER_free,
 	INTEGER_print,
 	INTEGER_compare,
+#ifdef	ASN_ENABLE_BNER_SUPPORT
+	INTEGER_decode_bner,	/* BNER decoder */
+	INTEGER_encode_bner,	/* BNER encoder */
+#endif	/* ASN_ENABLE_BNER_SUPPORT */
 	ber_decode_primitive,
 	INTEGER_encode_der,
 	INTEGER_decode_xer,

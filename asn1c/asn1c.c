@@ -125,6 +125,8 @@ main(int ac, char **av) {
                 asn1_compiler_flags |= A1C_GEN_PER;
             } else if(strcmp(optarg, "en-OER") == 0) {
                 asn1_compiler_flags |= A1C_GEN_OER;
+            } else if(strcmp(optarg, "en-BNER") == 0) {
+                asn1_compiler_flags |= A1C_GEN_BNER;
             } else if(strcmp(optarg, "en-example") == 0) {
                 asn1_compiler_flags |= A1C_GEN_EXAMPLE;
             } else if(strcmp(optarg, "en-autotools") == 0) {
