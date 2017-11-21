@@ -1712,8 +1712,8 @@ OCTET_STRING_print_utf8(const asn_TYPE_descriptor_t *td, const void *sptr,
 }
 
 void
-OCTET_STRING_free(const asn_TYPE_descriptor_t *td, void *sptr,
-                  enum asn_struct_free_method method) {
+__OCTET_STRING_free(const asn_TYPE_descriptor_t *td, void *sptr,
+                    enum asn_struct_free_method method) {
 	OCTET_STRING_t *st = (OCTET_STRING_t *)sptr;
 	const asn_OCTET_STRING_specifics_t *specs;
 	asn_struct_ctx_t *ctx;
@@ -1762,6 +1762,7 @@ OCTET_STRING_free(const asn_TYPE_descriptor_t *td, void *sptr,
         break;
     }
 }
+CC_WEAK_ALIAS(__OCTET_STRING_free, OCTET_STRING_free);
 
 /*
  * Conversion routines.
