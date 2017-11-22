@@ -104,6 +104,7 @@ libasn1cskeletons_la_SOURCES +=           \
     bner_decoder.c bner_decoder.h         \
     bner_encoder.c bner_encoder.h         \
     bner_fixed_stubs.c bner_fixed_stubs.h \
+    bner_primitive.c bner_primitive.h     \
     bner_support.c bner_support.h         \
     constr_CHOICE_bner.c                  \
     constr_SEQUENCE_bner.c                \

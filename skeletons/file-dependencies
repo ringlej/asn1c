@@ -93,6 +93,7 @@ constr_SET_OF.h constr_SET_OF_oer.c
 CODEC-PER:			# THIS IS A SPECIAL SECTION
 
 CODEC-BNER:			# THIS IS A SPECIAL SECTION
+bner_primitive.h bner_primitive.c
 constr_CHOICE.h constr_CHOICE_bner.c
 constr_SEQUENCE.h constr_SEQUENCE_bner.c
 constr_SEQUENCE_OF.h constr_SEQUENCE_OF_bner.c constr_SET_OF.h asn_SEQUENCE_OF.h asn_SET_OF.h

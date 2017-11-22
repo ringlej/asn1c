@@ -6,6 +6,9 @@
 #define	ASN_CODECS_PRIM_H
 
 #include <asn_application.h>
+#ifndef ASN_DISABLE_BNER_SUPPORT
+#include <bner_primitive.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
