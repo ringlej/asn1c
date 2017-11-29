@@ -12,10 +12,12 @@ extern "C" {
 #endif
 
 typedef struct ANY {
-	uint8_t *buf;	/* BER-encoded ANY contents */
-	int size;	/* Size of the above buffer */
-
-	asn_struct_ctx_t _asn_ctx;	/* Parsing across buffer boundaries */
+    uint8_t *buf; /* BER-encoded ANY contents */
+    int size;     /* Size of the above buffer */
+#ifndef ASN_DISABLE_BNER_SUPPORT
+    ber_tlv_tag_t tag;
+#endif
+    asn_struct_ctx_t _asn_ctx; /* Parsing across buffer boundaries */
 } ANY_t;
 
 extern asn_TYPE_descriptor_t asn_DEF_ANY;
