@@ -11,18 +11,40 @@ NULL_decode_bner(const asn_codec_ctx_t *opt_codec_ctx,
                  const asn_TYPE_descriptor_t *td, void **struct_ptr,
                  const void *buf_ptr, size_t size, ber_tlv_tag_t tag,
                  int tag_mode) {
+    asn_dec_rval_t rval;
+    bner_tag_lvt_t bner_tag;
+
     (void)opt_codec_ctx;
     (void)td;
-    (void)struct_ptr;
-    (void)buf_ptr;
-    (void)size;
-    (void)tag;
     (void)tag_mode;
 
-    asn_dec_rval_t tmp_error = {RC_FAIL, 0};
-    ASN_DEBUG("%s Not yet implemented. Failed to decode %s", __func__,
-              td->name);
-    return tmp_error;
+    rval = bner_fetch_tag_lvt(buf_ptr, size, &bner_tag);
+    if(rval.code != RC_OK) return rval;
+
+    if(!BER_TAGS_EQUAL(bner_tag.tag, convert_ber_to_bner_tag(tag))) {
+        rval.code = RC_FAIL;
+        rval.consumed = 0;
+        return rval;
+    }
+
+    if(!*struct_ptr) {
+        *struct_ptr = MALLOC(sizeof(NULL_t));
+        if(*struct_ptr) {
+            *(NULL_t *)*struct_ptr = 0;
+        } else {
+            ASN__DECODE_FAILED;
+        }
+    }
+
+    buf_ptr = ((const char *)buf_ptr) + rval.consumed;
+    size -= rval.consumed;
+
+    /*
+     * NULL type does not have content octets.
+     */
+
+    rval.code = RC_OK;
+    return rval;
 }
 
 asn_enc_rval_t
