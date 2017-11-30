@@ -11,18 +11,69 @@ BOOLEAN_decode_bner(const asn_codec_ctx_t *opt_codec_ctx,
                     const asn_TYPE_descriptor_t *td, void **bool_value,
                     const void *buf_ptr, size_t size, ber_tlv_tag_t tag,
                     int tag_mode) {
-    (void)opt_codec_ctx;
-    (void)td;
-    (void)bool_value;
-    (void)buf_ptr;
-    (void)size;
-    (void)tag;
-    (void)tag_mode;
+    BOOLEAN_t *st = (BOOLEAN_t *)*bool_value;
+    asn_dec_rval_t rval;
+    bner_tag_lvt_t bner_tag;
 
-    asn_dec_rval_t tmp_error = {RC_FAIL, 0};
-    ASN_DEBUG("%s Not yet implemented. Failed to decode %s", __func__,
-              td->name);
-    return tmp_error;
+    if(st == NULL) {
+        st = (BOOLEAN_t *)(*bool_value = CALLOC(1, sizeof(*st)));
+        if(st == NULL) {
+            rval.code = RC_FAIL;
+            rval.consumed = 0;
+            return rval;
+        }
+    }
+
+    ASN_DEBUG("Decoding %s as BOOLEAN (tm=%d)", td->name, tag_mode);
+
+    rval = bner_fetch_tag_lvt(buf_ptr, size, &bner_tag);
+    if(rval.code != RC_OK) return rval;
+
+    if(!BER_TAGS_EQUAL(bner_tag.tag, convert_ber_to_bner_tag(tag))) {
+        rval.code = RC_FAIL;
+        rval.consumed = 0;
+        return rval;
+    }
+
+    buf_ptr = ((const char *)buf_ptr) + rval.consumed;
+    size -= rval.consumed;
+
+    switch(bner_tag.lvt_type) {
+    case BNER_LVT_LENGTH:
+        if(!tag_mode || bner_tag.u.length != 1) {
+            rval.code = RC_FAIL;
+            rval.consumed = 0;
+            return rval;
+        }
+        if(bner_tag.u.length > size) {
+            rval.code = RC_WMORE;
+            rval.consumed = 0;
+            return rval;
+        }
+        *st = ((const uint8_t *)buf_ptr)[0];
+        rval.consumed += bner_tag.u.length;
+        break;
+    case BNER_LVT_VALUE:
+        if(tag_mode) {
+            rval.code = RC_FAIL;
+            rval.consumed = 0;
+            return rval;
+        }
+        *st = bner_tag.u.value;
+        break;
+    case BNER_LVT_TYPE:
+    default:
+        rval.code = RC_FAIL;
+        rval.consumed = 0;
+        return rval;
+    }
+
+
+    ASN_DEBUG("Took %ld bytes to decode %s, value=%d", (long)rval.consumed,
+              td->name, *st);
+
+    rval.code = RC_OK;
+    return rval;
 }
 
 asn_enc_rval_t
