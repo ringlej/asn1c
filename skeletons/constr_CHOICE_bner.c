@@ -89,7 +89,6 @@ CHOICE_decode_bner(const asn_codec_ctx_t *opt_codec_ctx,
                    const void *buf_ptr, size_t size, ber_tlv_tag_t tag,
                    int tag_mode) {
     (void)opt_codec_ctx;
-    (void)tag;
     (void)tag_mode;
 
     const asn_CHOICE_specifics_t *specs =
@@ -118,7 +117,14 @@ CHOICE_decode_bner(const asn_codec_ctx_t *opt_codec_ctx,
         }
     }
 
-    rval = bner_fetch_tag_lvt(buf_ptr, size, &bner_tag);
+    if(BER_TAG_CLASS(tag) == ASN_TAG_CLASS_PRIVATE) {
+        bner_tag.tag = BER_TAG_VALUE(tag) << 2 | ASN_TAG_CLASS_CONTEXT;
+        bner_tag.lvt_type = BNER_LVT_LENGTH;
+        bner_tag.u.length = 0;
+    } else {
+        rval = bner_fetch_tag_lvt(buf_ptr, size, &bner_tag);
+    }
+
     ASN_DEBUG("In %s CHOICE tag: %s", td->name, bner_tag_lvt_string(&bner_tag));
 
     key.el_tag = bner_tag.tag;
